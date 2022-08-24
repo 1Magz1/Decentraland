@@ -30,4 +30,9 @@ export class Zombie extends Entity {
     this.getComponent(Animator).getClip('Walking').stop();
     this.getComponent(Animator).getClip('Attacking').stop();
   }
+
+  destroy() {
+    this.getComponent(Transform).position.setAll(0);
+    // engine.removeEntity(this);
+  }
 }
