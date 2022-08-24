@@ -14,7 +14,8 @@
   },
   "devDependencies": {
     "@dcl/eslint-config": "^1.0.1",
-    "decentraland-ecs": "latest"
+    "decentraland-ecs": "latest",
+    "eslint-config-airbnb-base": "^15.0.0"
   },
   "engines": {
     "node": ">=14.0.0",
