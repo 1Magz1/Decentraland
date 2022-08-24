@@ -3,6 +3,6 @@
   "include": [
     "src",
     ".eslintrc.js",
-    "modules"
+    "src/modules"
   ]
 }
