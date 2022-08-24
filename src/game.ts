@@ -1,4 +1,3 @@
-import * as utils from '@dcl/ecs-scene-utils';
 import { Rifle, Cooldown } from './modules/rifle';
 import { Zombie } from './modules/zombie';
 import { zombieParams } from './constants';
