@@ -18,7 +18,7 @@ for (let index = 0; index < zombieAmount; index += 1) {
   const zombie = new Zombie(
     new GLTFShape('models/zombie.glb'),
     new Transform({
-      position: new Vector3(14 + index, 0.933, 14 + index),
+      position: new Vector3(20 - index, 1, 20 + index),
     }),
   );
 
