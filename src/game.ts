@@ -23,8 +23,8 @@ input.subscribe('BUTTON_DOWN', ActionButton.POINTER, true, (event) => {
 
   if (event.hit) {
     if (event.hit?.meshName === 'Zombie_collider') {
-      const object = engine.entities[event.hit?.entityId];
-      engine.removeEntity(object);
+      const entity = engine.entities[event.hit?.entityId];
+      engine.removeEntity(entity);
     }
   }
 });
