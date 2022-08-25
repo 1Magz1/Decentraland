@@ -1,3 +1,5 @@
+import * as utils from '@dcl/ecs-scene-utils';
+
 export class Zombie extends Entity {
   constructor(
     model: GLTFShape,
@@ -7,6 +9,19 @@ export class Zombie extends Entity {
     engine.addEntity(this);
     this.addComponent(model);
     this.addComponent(transform);
+
+    this.addComponent(
+      new OnPointerDown(
+        () => {
+          this.destroy();
+        },
+        {
+          button: ActionButton.POINTER,
+          showFeedback: false,
+          distance: 50,
+        },
+      ),
+    );
 
     this.addComponent(new Animator());
 
@@ -31,9 +46,12 @@ export class Zombie extends Entity {
     this.getComponent(Animator).getClip('Attacking').stop();
   }
 
-  static destroy() {
-    log('destroy');
-    // const zombie = engine.entities[id];
-    // engine.removeEntity(zombie);
+  destroy() {
+    this.addComponent(
+      new utils.Delay(250, () => {
+        this.getComponent(Transform).scale.setAll(0);
+        engine.removeEntity(this);
+      }),
+    );
   }
 }

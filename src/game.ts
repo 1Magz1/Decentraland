@@ -20,11 +20,4 @@ input.subscribe('BUTTON_DOWN', ActionButton.POINTER, true, (event) => {
   if (gun.hasComponent(Cooldown)) return;
 
   gun.playFireAnim();
-
-  if (event.hit) {
-    if (event.hit?.meshName === 'Zombie_collider') {
-      const entity = engine.entities[event.hit?.entityId];
-      engine.removeEntity(entity);
-    }
-  }
 });
