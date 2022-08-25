@@ -15,7 +15,4 @@
   ],
   "extends": "./node_modules/decentraland-ecs/types/tsconfig.json",
   "compileOnSave": false,
-  "files": [
-    "node_modules/cannon/build/cannon.min.js"
-  ]
 }
