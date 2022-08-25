@@ -40,12 +40,12 @@ export class ZombieAttack implements ISystem {
     );
 
     if (distance >= 4) {
+      this.zombie.walk();
       const forwardVector = Vector3.Forward().rotate(this.transform.rotation);
       const increment = forwardVector.scale(
         dt * zombieParams.MOVE_SPEED * this.random,
       );
       this.transform.translate(increment);
-      this.zombie.walk();
     } else {
       this.zombie.attack();
     }

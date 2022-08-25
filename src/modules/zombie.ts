@@ -1,7 +1,10 @@
 import * as utils from '@dcl/ecs-scene-utils';
+import { Sound } from './sound';
 
 export class Zombie extends Entity {
   health: number;
+
+  sound: Sound;
 
   constructor(
     model: GLTFShape,
@@ -35,6 +38,12 @@ export class Zombie extends Entity {
     );
 
     this.health = 100;
+
+    this.sound = new Sound(
+      new AudioClip('sounds/zombie-sounds.mp3'),
+      true,
+      this.getComponent(Transform).position,
+    );
   }
 
   attack() {
@@ -42,6 +51,8 @@ export class Zombie extends Entity {
   }
 
   walk() {
+    const pos = this.getComponent(Transform).position;
+    this.sound.playAudioAtPosition(pos);
     this.getComponent(Animator).getClip('Walking').play();
   }
 
