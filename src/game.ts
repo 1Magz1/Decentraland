@@ -21,8 +21,10 @@ input.subscribe('BUTTON_DOWN', ActionButton.POINTER, true, (event) => {
 
   gun.playFireAnim();
 
-  if (event.hit?.meshName === 'Zombie_collider') {
-    const object = engine.entities[event.hit?.entityId];
-    engine.removeEntity(object);
+  if (event.hit) {
+    if (event.hit?.meshName === 'Zombie_collider') {
+      const object = engine.entities[event.hit?.entityId];
+      engine.removeEntity(object);
+    }
   }
 });
