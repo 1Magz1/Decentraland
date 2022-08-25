@@ -1,6 +1,8 @@
 import * as utils from '@dcl/ecs-scene-utils';
 
 export class Zombie extends Entity {
+  health: number;
+
   constructor(
     model: GLTFShape,
     transform: Transform,
@@ -13,7 +15,7 @@ export class Zombie extends Entity {
     this.addComponent(
       new OnPointerDown(
         () => {
-          this.destroy();
+          this.takeDamage();
         },
         {
           button: ActionButton.POINTER,
@@ -31,6 +33,8 @@ export class Zombie extends Entity {
     this.getComponent(Animator).addClip(
       new AnimationState('Attacking', { looping: true }),
     );
+
+    this.health = 100;
   }
 
   attack() {
@@ -44,6 +48,13 @@ export class Zombie extends Entity {
   stopAnimations() {
     this.getComponent(Animator).getClip('Walking').stop();
     this.getComponent(Animator).getClip('Attacking').stop();
+  }
+
+  takeDamage() {
+    this.health -= 51 - Math.random();
+    if (this.health <= 0) {
+      this.destroy();
+    }
   }
 
   destroy() {

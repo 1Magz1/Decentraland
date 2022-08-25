@@ -16,7 +16,7 @@ onSceneReadyObservable.add(() => {
 
 // Controls
 const input = Input.instance;
-input.subscribe('BUTTON_DOWN', ActionButton.POINTER, true, (event) => {
+input.subscribe('BUTTON_DOWN', ActionButton.POINTER, true, (e) => {
   if (gun.hasComponent(Cooldown)) return;
 
   gun.playFireAnim();
