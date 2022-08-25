@@ -11,7 +11,11 @@ gun.setParent(Attachable.FIRST_PERSON_CAMERA);
 const zombieController = new ZombieController();
 
 onSceneReadyObservable.add(() => {
-  zombieController.spawnZombies();
+  zombieController.spawn();
+});
+
+onSceneReadyObservable.add(() => {
+  zombieController.timerSpawn();
 });
 
 // Controls
